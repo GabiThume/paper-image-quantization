@@ -216,7 +216,6 @@ void Classifier::bayes(float trainingRatio, int numRepetition, Mat vectorFeature
         num_testing = 0;
         for (i = 0; i < height; i++) {
             if (!count(vectorRand.begin(), vectorRand.end(), i)){
-                // cout << ">>> teste " << i << endl;
                 Mat tmp = dataTesting.row(num_testing);
                 vectorFeatures.row(i).copyTo(tmp);
                 labelsTesting.at<float>(num_testing, 0) = classes.at<float>(i,0);

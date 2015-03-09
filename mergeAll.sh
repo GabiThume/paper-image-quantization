@@ -2,8 +2,6 @@
 #
 # ./mergeDataSets <novo_arquivo> <quantidade_arquivos> <nome_dos_arquivos>
 #
-# Mude para .txt caso precise, e descomente a primeira linha no arquivo mergeDataSets.cpp
-
 
 cor[0]=256
 cor[1]=128

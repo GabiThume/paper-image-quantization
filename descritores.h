@@ -1,11 +1,3 @@
-/*
-	Luciana Calixta Escobar
-	
-	
-	Biblioteca que contem 
-	
-*/
-
 
 #ifndef _DESCRITORES_H
 #define _DESCRITORES_H

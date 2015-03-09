@@ -41,9 +41,6 @@ int main (int argc, char **argv){
     nInstances = nInstancesAux;
     fout = fopen(argv[1], "w");
     for(i = 0; i < nInstances; ++i){
-        //if(i == 0)
-        //  fprintf(fout, "%d\t%d\t%d\n", nInstances, nClassesAux, nAttrs);
-
         for(j = 0; j < nFiles; ++j){
             fscanf(files[j], "%d\t%d", &nInst, &label);
             if(j == 0){

@@ -22,7 +22,6 @@ Mat readFeatures(const string& filename, Mat &classes, int &nClasses){
     if(!myFile)
         throw exception();
 
-    /* Read the first line, which contains the number of objects, classes and features */
     getline(myFile, infos);
     if (infos == "")
         return Mat();
@@ -35,7 +34,6 @@ Mat readFeatures(const string& filename, Mat &classes, int &nClasses){
     n = atoi(objetos.c_str());
     d = atoi(numFeatures.c_str());
 
-    /* Create a Mat named data with the file data provided */
     data.create(n, d, CV_32FC1);
     classes.create(n, 1, CV_32FC1);
     while (getline(myFile, line)) {
@@ -156,8 +154,8 @@ int descriptor(char const *baseImagem, char const *featuresDirectory, int method
 		break;
 	}
 	
-	featureVector.create(1, featureVectorSize, CV_64F); // aloca o vetor de caracteristicas com o tamanho featureVectorSize
-	featureVector = Scalar::all(0); // preenche com zeros
+	featureVector.create(1, featureVectorSize, CV_64F); 
+	featureVector = Scalar::all(0);
 	
 	cout << numberColor << " cores, tamanho " << nRes << endl;
 	cout << "File: " << nome << endl;
@@ -166,13 +164,8 @@ int descriptor(char const *baseImagem, char const *featuresDirectory, int method
 	
 	sprintf(directory, "%s/", baseImagem);
 	
-	// pega a quantidade de classes (i.e. verifica quantas subpastas existem)
 	qtdClasses = qtdArquivos(directory); 
-	
-	//file .txt grava, na primeira linha, a quantidade de imagens,quantidade de classes, 
-	//quantidade de atributos
 	int *objperClass = (int *)malloc(qtdClasses*sizeof(int));
-	
 	qtdImgTotal = qtdImagensTotal(baseImagem, qtdClasses, objperClass, &maxc);
 	
 	fprintf(arq,"%d\t%d\t%d\n", qtdImgTotal, qtdClasses, featureVectorSize); 
@@ -187,12 +180,8 @@ int descriptor(char const *baseImagem, char const *featuresDirectory, int method
 		cout << " " << porc*100 << "%" << " (" << objperClass[i] << ")" <<endl;
 	}
 
-	// pos processa matriz de dados para retirar colunas nulas
-	// para isso constroi matriz para armazenar vetores
- 	//if (oZero == 1) {
 	features = Mat::zeros(qtdImgTotal, featureVectorSize, CV_32F);
 	labels = Mat::zeros(qtdImgTotal, 1, CV_8U);
- 	//}
 	
 	for(i = 1; i <= qtdClasses; i++) {
 
@@ -235,7 +224,6 @@ int descriptor(char const *baseImagem, char const *featuresDirectory, int method
 			else
 				img.copyTo(newimg);
 			
-			//Quantizacao ou conversao de cores
 			switch(quantMethod){
 				case 1:
                     QuantizationIntensity(newimg, newimg, numberColor);
@@ -307,7 +295,6 @@ int descriptor(char const *baseImagem, char const *featuresDirectory, int method
 	cout << "Wrote on file " << nome << endl;
 	cout << "---------------------------------------------------------------------------------------" << endl;
 	for (i = 0; i < imgTotal; i++) {
-	    // grava o numero da imagem e a classe que ela pertence
 		fprintf(arq, "%d\t%d\t", i, labels.at<uchar>(i,0));
 		for(k = 0; k < featureVectorSize; k++) {
 			if (oNorm == 2)  {
