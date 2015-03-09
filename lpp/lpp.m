@@ -1,5 +1,8 @@
+%
 %	Author: Tiago Nazare
 %	Universidade de São Paulo / ICMC / 2014
+%
+%   The code lpp_he is available in http://people.cs.uchicago.edu/~dinoj/projects/dimred/lpp_he.m
  
  function tests()
     files = dir('originals2/*.csv');
