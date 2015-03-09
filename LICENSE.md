@@ -1,4 +1,4 @@
-Copyright (c) 2015, Gabriela Thumé
+Copyright (c) 2015, Gabriela Thumé, Moacir Ponti and Tiago Nazaré
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
